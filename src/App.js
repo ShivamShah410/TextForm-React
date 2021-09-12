@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <TextForm ipHeading="Enter your Text to analyse"/>
+      <TextForm ipHeading="Enter your Text to analyse" opHeading="This is your output text"/ >
     </>
   );
 }
