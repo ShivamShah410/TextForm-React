@@ -2,9 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function Navbar(props) {
+
+  // let darkModeTextColor = "";
+  // if (props.mode === "dark") {
+  //   darkModeTextColor = "light";
+  // } else {
+  //   darkModeTextColor = "dark";
+  // }
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav
+        className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {props.title}
@@ -43,7 +53,21 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
-            <form className="d-flex">
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckDefault"
+                onClick={props.toggleMode}
+              />
+              <label
+                className={`form-check-label text-${props.mode === 'dark' ? 'light' : 'dark'}`}
+                htmlFor="flexSwitchCheckDefault"
+              >
+                Enable {props.mode === 'light' ? 'Dark' : 'Light'} Mode
+              </label>
+            </div>
+            <form className="d-flex mx-3">
               <input
                 className="form-control me-2"
                 type="search"
@@ -63,7 +87,9 @@ export default function Navbar(props) {
 
 Navbar.propTypes = {
   title: PropTypes.string,
+  mode: PropTypes.string,
 };
 Navbar.defaultProps = {
   title: "TextUtils",
+  mode: "light",
 };

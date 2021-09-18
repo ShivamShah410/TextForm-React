@@ -22,6 +22,19 @@ export default function TextForm(props) {
         setOpText("");
     }
 
+    let modeStyle = {}
+    if(props.mode === 'dark') {
+        modeStyle = {
+            backgroundColor: '#696969',
+            color: 'white'
+        }
+    } else {
+        modeStyle = {
+            backgroundColor: 'white',
+            color: '#696969'
+        }
+    }
+
     const copyTextFunc = ()=>{
         // var text = ipText;
         let text = document.getElementById("myboxinput");
@@ -44,22 +57,22 @@ export default function TextForm(props) {
 
     return (
         <div>
-            <div className="container my-3">
+            <div className="container my-3" style={modeStyle}>
                 <h3> {props.ipHeading} </h3>
                 <div className="mb-3">
-                    <textarea className="form-control mb-5" id="myboxinput" rows="5" value={ipText} onChange={changeIpFunc}></textarea>
+                    <textarea className="form-control mb-5" id="myboxinput" rows="5" value={ipText} onChange={changeIpFunc} style={modeStyle}></textarea>
                 </div>
                 <hr/>
                 <h3>Operations</h3>
-                <button className="btn btn-secondary" onClick={convToUpper}>Convert To Uppercase</button>
-                <button className="btn btn-secondary mx-3" onClick={convToLower}>Convert To Lowercase</button>
-                <button className="btn btn-secondary" onClick={reset}>Reset</button>
-                <button className="btn btn-secondary mx-3" onClick={copyTextFunc}>Copy Text</button>
-                <button className="btn btn-secondary" onClick={removeExtraSpace}>Remove Extra Space</button>
+                <button className="btn btn-dark" onClick={convToUpper}>Convert To Uppercase</button>
+                <button className="btn btn-dark mx-3" onClick={convToLower}>Convert To Lowercase</button>
+                <button className="btn btn-dark" onClick={reset}>Reset</button>
+                <button className="btn btn-dark mx-3" onClick={copyTextFunc}>Copy Text</button>
+                <button className="btn btn-dark" onClick={removeExtraSpace}>Remove Extra Space</button>
                 <hr/>
                 <h3> {props.opHeading} </h3>
                 <div className="mb-3">
-                    <textarea className="form-control mb-5" id="myboxoutput" rows="5" value={opText} onChange={changeOpFunc}></textarea>
+                    <textarea className="form-control mb-5" id="myboxoutput" rows="5" value={opText} onChange={changeOpFunc} style={modeStyle}></textarea>
                 </div>
                 <hr/>
                 <h4>Your text summary</h4>
