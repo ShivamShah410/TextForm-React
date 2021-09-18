@@ -19,6 +19,19 @@ export default function TextForm(props) {
 
     const reset = ()=>{
         setIpText("");
+        setOpText("");
+    }
+
+    const copyTextFunc = ()=>{
+        // var text = ipText;
+        let text = document.getElementById("myboxinput");
+        text.select();
+        navigator.clipboard.writeText(text.value);
+    }
+
+    const removeExtraSpace = ()=>{
+        let newText = ipText.split(/[ ]+/);
+        setOpText(newText.join(" "));
     }
 
     const changeIpFunc = (event)=>{
@@ -40,7 +53,9 @@ export default function TextForm(props) {
                 <h3>Operations</h3>
                 <button className="btn btn-secondary" onClick={convToUpper}>Convert To Uppercase</button>
                 <button className="btn btn-secondary mx-3" onClick={convToLower}>Convert To Lowercase</button>
-                <button className="btn btn-secondary" onClick={reset}>Clear Text</button>
+                <button className="btn btn-secondary" onClick={reset}>Reset</button>
+                <button className="btn btn-secondary mx-3" onClick={copyTextFunc}>Copy Text</button>
+                <button className="btn btn-secondary" onClick={removeExtraSpace}>Remove Extra Space</button>
                 <hr/>
                 <h3> {props.opHeading} </h3>
                 <div className="mb-3">
@@ -48,7 +63,7 @@ export default function TextForm(props) {
                 </div>
                 <hr/>
                 <h4>Your text summary</h4>
-                <p>{ipText===""?0:ipText.split("\n").length} lines, {ipText===""?0:ipText.replace("\n", " ").split(" ").length} words, {ipText.length} letters</p>
+                <p><b>{ipText===""?0:ipText.split("\n").length}</b> lines, <b>{ipText===""?0:ipText.replace("\n", " ").split(" ").length}</b> words, <b>{ipText.length}</b> letters</p>
             </div>
         </div>
     );
