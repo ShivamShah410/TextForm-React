@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/TextForm-React/static/css/main.ea1455b2.chunk.css",
+    "main.js": "/TextForm-React/static/js/main.71461e0b.chunk.js",
+    "main.js.map": "/TextForm-React/static/js/main.71461e0b.chunk.js.map",
+    "runtime-main.js": "/TextForm-React/static/js/runtime-main.84a61207.js",
+    "runtime-main.js.map": "/TextForm-React/static/js/runtime-main.84a61207.js.map",
+    "static/js/2.a31adfc2.chunk.js": "/TextForm-React/static/js/2.a31adfc2.chunk.js",
+    "static/js/2.a31adfc2.chunk.js.map": "/TextForm-React/static/js/2.a31adfc2.chunk.js.map",
+    "static/js/3.425db54f.chunk.js": "/TextForm-React/static/js/3.425db54f.chunk.js",
+    "static/js/3.425db54f.chunk.js.map": "/TextForm-React/static/js/3.425db54f.chunk.js.map",
+    "index.html": "/TextForm-React/index.html",
+    "static/css/main.ea1455b2.chunk.css.map": "/TextForm-React/static/css/main.ea1455b2.chunk.css.map",
+    "static/js/2.a31adfc2.chunk.js.LICENSE.txt": "/TextForm-React/static/js/2.a31adfc2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.84a61207.js",
+    "static/js/2.a31adfc2.chunk.js",
+    "static/css/main.ea1455b2.chunk.css",
+    "static/js/main.71461e0b.chunk.js"
+  ]
+}
