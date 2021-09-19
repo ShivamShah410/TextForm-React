@@ -1,34 +1,76 @@
 import "./App.css";
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import Alert from "./components/Alert";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
+  const [mode, setMode] = useState("light");
+  const [alert, setAlert] = useState(null);
 
-  const [mode, setMode] = useState("light")
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
 
-  const toggleMode = ()=>{
-    if(mode === 'dark'){
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  };
+
+  const toggleMode = () => {
+    showAlert("Mode Changed", "success");
+    if (mode === "dark") {
+      setMode("light");
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      document.title = "TextUtils - Light";
     } else {
-      setMode('dark');
-      document.body.style.backgroundColor = '#002259';
+      setMode("dark");
+      document.body.style.backgroundColor = "#002259";
+      document.body.style.color = "white";
+      document.title = "TextUtils - Dark";
+
+      // setInterval(() => {
+      //   document.title = 'Good Morning';
+      // }, 2000);
+      // setInterval(() => {
+      //   document.title = 'Install TextUtils Now';
+      // }, 1500);
     }
-  }
+  };
 
   return (
     <>
-      <Navbar mode={mode} toggleMode={toggleMode}/>
-      {/* <div className="container my-3"> */}
-        <TextForm
-          ipHeading="Enter your Text to analyse"
-          opHeading="This is your output text"
-          mode={mode}
-        />
-        {/* <About /> */}
-      {/* </div> */}
+      <Router>
+        <div className='container mx-3'>
+        <Navbar mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+
+        {/* /users --> componenet 1
+            /users/home --> component 2
+            if we don't use exact it will render component 1 in both calls
+            by default react use partial matching  */}
+
+        <Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/">
+            <TextForm
+              ipHeading="Enter your Text to analyse"
+              opHeading="This is your output text"
+              mode={mode}
+              showAlert={showAlert}
+            />
+          </Route>
+        </Switch>
+        </div>
+      </Router>
     </>
   );
 }
