@@ -29,7 +29,7 @@ export default function TextForm(props) {
     let modeStyle = {}
     if(props.mode === 'dark') {
         modeStyle = {
-            backgroundColor: '#3b3b3b',
+            backgroundColor: '#005191',
             color: 'white'
         }
     } else {
@@ -41,9 +41,10 @@ export default function TextForm(props) {
 
     const copyTextFunc = ()=>{
         // var text = ipText;
-        let text = document.getElementById("myboxinput");
+        let text = document.getElementById("myboxoutput");
         text.select();
         navigator.clipboard.writeText(text.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Text copied to clipboard !!", "success")
     }
 
@@ -69,11 +70,11 @@ export default function TextForm(props) {
                 </div>
                 <hr/>
                 <h3>Operations</h3>
-                <button className="btn btn-dark mx-1 my-1" onClick={convToUpper}>Convert To Uppercase</button>
-                <button className="btn btn-dark mx-1 my-1" onClick={convToLower}>Convert To Lowercase</button>
-                <button className="btn btn-dark mx-1 my-1" onClick={reset}>Reset</button>
-                <button className="btn btn-dark mx-1 my-1" onClick={copyTextFunc}>Copy Text</button>
-                <button className="btn btn-dark mx-1 my-1" onClick={removeExtraSpace}>Remove Extra Space</button>
+                <button disabled={ipText.length === 0} className="btn btn-dark mx-1 my-1" onClick={convToUpper}>Convert To Uppercase</button>
+                <button disabled={ipText.length === 0} className="btn btn-dark mx-1 my-1" onClick={convToLower}>Convert To Lowercase</button>
+                <button disabled={ipText.length === 0} className="btn btn-dark mx-1 my-1" onClick={reset}>Reset</button>
+                <button disabled={ipText.length === 0} className="btn btn-dark mx-1 my-1" onClick={copyTextFunc}>Copy Text</button>
+                <button disabled={ipText.length === 0} className="btn btn-dark mx-1 my-1" onClick={removeExtraSpace}>Remove Extra Space</button>
                 <hr/>
                 <h3> {props.opHeading} </h3>
                 <div className="mb-3">
