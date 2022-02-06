@@ -4,7 +4,7 @@ export default function TextForm(props) {
 
     const [ipText, setIpText] = useState("This is my sample input text")
     const [opText, setOpText] = useState("This is my sample Output text")
-
+    
     let wordCount = ipText.replace('\n', ' ').split(" ").filter((e) => {return e.length !== 0}).length;
 
     const convToUpper = ()=>{
